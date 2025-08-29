@@ -13,6 +13,20 @@ a {
   text-decoration: none;
 }
 
+.page {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+.page-body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "OpenSans-Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
 .visually-hidden {
   position: absolute;
   clip: rect(0, 0, 0, 0);

@@ -1,5 +1,7 @@
 .idea/
 node_modules/
+build/
+public/
 bower_components/
 .DS_Store
 *.log
