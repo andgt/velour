@@ -12,6 +12,8 @@ const clean = require('gulp-clean');
 const twig = require('gulp-twig');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
+const imagecomp = require('compress-images');
+const {deleteSync} = require('del');
 
 function browsersync() {
   browserSync.init({
@@ -57,6 +59,28 @@ function styles() {
   .pipe(browserSync.stream())
 }
 
+function images() {
+  imagecomp(
+    'src/img/**/*',
+    'public/img/',
+    { compress_force: false, statistic: true, autoupdate: true }, false,
+    { jpg: { engine: 'mozjpeg', command: ['-quality', '75'] } },
+    { png: { engine: 'pngquant', command: ['--quality=75-100', '-o'] } },
+    { svg: { engine: 'svgo', command: '--multipass' } },
+    { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web'] } },
+    function (err, completed) {
+      if (completed === true) {
+        browserSync.reload()
+      }
+    }
+  )
+}
+
+function fonts() {
+  return src('src/fonts/**/*')
+  .pipe(dest('public/fonts'))
+}
+
 function buildcopy() {
   return src([
       'src/css/**/*.min.css',
@@ -71,6 +95,15 @@ function cleanbuild() {
   return src('build', {allowEmpty: true}).pipe(clean())
 }
 
+async function copyResources() {
+  images()
+  fonts()
+}
+
+async function cleanRes() {
+  return deleteSync(['public/*'])
+}
+
 function startwatch() {
   watch('src/**/*.js', scripts);
   watch('src/**/*.scss', styles);
@@ -81,5 +114,7 @@ exports.browsersync = browsersync;
 exports.scripts = scripts;
 exports.compileTwig = compileTwig;
 exports.styles = styles;
-exports.default = parallel(browsersync, scripts, compileTwig, styles, startwatch);
-exports.build = series(cleanbuild, scripts, compileTwig, styles, buildcopy);
+exports.copyResources = copyResources;
+exports.cleanRes = cleanRes;
+exports.default = parallel(cleanRes, copyResources, browsersync, scripts, compileTwig, styles, startwatch);
+exports.build = series(cleanbuild, scripts, compileTwig, buildcopy);
