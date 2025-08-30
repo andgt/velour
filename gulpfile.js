@@ -34,7 +34,7 @@ function scripts() {
 }
 
 function compileTwig() {
-  return src(['src/**/*.twig', '!./src/includes/*.twig'])
+  return src(['src/**/*.twig', '!./src/includes/**/*.twig'])
     .pipe(plumber({
       errorHandler: notify.onError(function(error) {
         return {
@@ -59,11 +59,16 @@ function styles() {
   .pipe(browserSync.stream())
 }
 
+function copyFavicon() {
+  return src('src/*.ico')
+  .pipe(dest('public/'))
+}
+
 function images() {
   imagecomp(
     'src/img/**/*',
     'public/img/',
-    { compress_force: false, statistic: true, autoupdate: true }, false,
+    { compress_force: false }, false,
     { jpg: { engine: 'mozjpeg', command: ['-quality', '75'] } },
     { png: { engine: 'pngquant', command: ['--quality=75-100', '-o'] } },
     { svg: { engine: 'svgo', command: '--multipass' } },
@@ -85,6 +90,7 @@ function buildcopy() {
   return src([
       'src/css/**/*.min.css',
       'src/**/*.twig',
+      'src/*.ico',
       'src/img/**/*',
       'src/fonts/*',
     ], {base: 'src'})
@@ -112,9 +118,10 @@ function startwatch() {
 
 exports.browsersync = browsersync;
 exports.scripts = scripts;
+exports.copyFavicon = copyFavicon;
 exports.compileTwig = compileTwig;
 exports.styles = styles;
 exports.copyResources = copyResources;
 exports.cleanRes = cleanRes;
-exports.default = parallel(cleanRes, copyResources, browsersync, scripts, compileTwig, styles, startwatch);
+exports.default = parallel(cleanRes, copyResources, copyFavicon, browsersync, scripts, compileTwig, styles, startwatch);
 exports.build = series(cleanbuild, scripts, compileTwig, buildcopy);

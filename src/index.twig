@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html class="page" lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Velour site</title>
-  <meta name="description" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="css/style.min.css">
-</head>
-<body class="page-body">
-  <main></main>
-</body>
-<script src="js/script.min.js"></script>
-</html>
+{% extends 'includes/base.twig' %}
+
+{% block title %}Список страниц{% endblock %}
+
+{% block page %}
+  {%
+    set pagesList = [
+      {link: 'main', title: 'Главная'},
+      {link: 'decoration', title: 'Украшения'},
+      {link: 'about', title: 'О нас'},
+      {link: 'delivery', title: 'Доставка и оплата'},
+      {link: 'reviews', title: 'Отзывы'},
+      {link: 'discounts', title: 'Акции и скидки'},
+      {link: 'partnership', title: 'Партнерам'},
+      {link: 'contacts', title: 'Контакты'},
+    ]
+  %}
+  <div>
+    <h1>Ссылки для страниц</h1>
+    <ul>
+      {% for item in pagesList %}
+        <li>
+          <a href="{{item.link}}.html">{{item.title}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
