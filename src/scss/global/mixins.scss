@@ -1,0 +1,16 @@
+@mixin offset($margin, $padding) {
+  margin: $margin;
+  padding: $padding;
+}
+
+@mixin typography($weight, $size, $height) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+}
+
+@mixin list-reset($type: none, $margin: 0px, $padding: 0px) {
+    list-style-type: $type;
+    margin: $margin;
+    padding: $padding;
+}

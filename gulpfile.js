@@ -50,6 +50,7 @@ function compileTwig() {
 
 function styles() {
   return src('src/scss/style.scss')
+  .pipe(sass().on('error', sass.logError))
   .pipe(sourcemaps.init())
   .pipe(concat('style.min.css'))
   .pipe(postcss([autoprefixer({overrideBrowserslist: ['last 2 versions']})]))
