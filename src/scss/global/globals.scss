@@ -27,11 +27,39 @@ a {
   font-family: "OpenSans-Regular", "Arial", sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
+  line-height: 1.2;
+  color: $black;
   background-color: $white;
 }
 
+.page-container {
+  padding: 20px 0 0 20px;
+}
+
+.page-title {
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: $deepblue;
+}
+
 .list-pages {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+
   @include list-reset;
+}
+
+.list-pages__link {
+  color: $deepblue;
+
+  @include typography(400, 1.8rem, 1.4);
+
+  &:hover {
+    color: $gold;
+  }
+
+  transition: 0.3s ease;
 }
 
 .visually-hidden {

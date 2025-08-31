@@ -15,12 +15,12 @@
             {link: 'contacts', title: 'Контакты'},
         ]
     %}
-    <div>
-        <h1>Ссылки для страниц</h1>
+    <div class="page-container">
+        <h1 class="page-title">Список страниц сайта</h1>
         <ul class="list-pages">
             {% for item in pagesList %}
                 <li>
-                    <a href="{{item.link}}.html">{{item.title}}</a>
+                    <a class="list-pages__link" href="{{item.link}}.html">{{item.title}}</a>
                 </li>
             {% endfor %}
         </ul>
