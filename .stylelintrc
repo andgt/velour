@@ -1,8 +1,8 @@
 {
-  "extends": "stylelint-config-htmlacademy",
-
+  "extends": "stylelint-config-standard-scss",
   "rules": {
-    "declaration-no-important": true,
-    "indentation": [2, {"ignore": ["inside-parens"]}]
+    "color-hex-length": "long",
+    "font-family-name-quotes": "always-unless-keyword",
+    "scss/load-partial-extension": "always"
   }
 }

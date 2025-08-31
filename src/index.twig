@@ -3,26 +3,26 @@
 {% block title %}Список страниц{% endblock %}
 
 {% block page %}
-  {%
-    set pagesList = [
-      {link: 'main', title: 'Главная'},
-      {link: 'decoration', title: 'Украшения'},
-      {link: 'about', title: 'О нас'},
-      {link: 'delivery', title: 'Доставка и оплата'},
-      {link: 'reviews', title: 'Отзывы'},
-      {link: 'discounts', title: 'Акции и скидки'},
-      {link: 'partnership', title: 'Партнерам'},
-      {link: 'contacts', title: 'Контакты'},
-    ]
-  %}
-  <div>
-    <h1>Ссылки для страниц</h1>
-    <ul class="list-pages">
-      {% for item in pagesList %}
-        <li>
-          <a href="{{item.link}}.html">{{item.title}}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+    {%
+        set pagesList = [
+            {link: 'main', title: 'Главная'},
+            {link: 'decoration', title: 'Украшения'},
+            {link: 'about', title: 'О нас'},
+            {link: 'delivery', title: 'Доставка и оплата'},
+            {link: 'reviews', title: 'Отзывы'},
+            {link: 'discounts', title: 'Акции и скидки'},
+            {link: 'partnership', title: 'Партнерам'},
+            {link: 'contacts', title: 'Контакты'},
+        ]
+    %}
+    <div>
+        <h1>Ссылки для страниц</h1>
+        <ul class="list-pages">
+            {% for item in pagesList %}
+                <li>
+                    <a href="{{item.link}}.html">{{item.title}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
