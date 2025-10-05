@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Default title{% endblock %}</title>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 </head>
 <body class="page-body">
-    <main>
-        {% block page %}{% endblock %}
-    </main>
+    {% block page %}{% endblock %}
 </body>
-<script src="js/script.min.js"></script>
+<script src="js/index.min.js"></script>
 </html>

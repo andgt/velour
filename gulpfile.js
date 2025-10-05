@@ -25,10 +25,13 @@ function browsersync() {
 
 function scripts() {
   return src([
-      'src/js/script.js',
+      'node_modules/swiper/swiper-bundle.js',
+      'src/js/**/*.js'
     ])
-    .pipe(concat('script.min.js'))
+    .pipe(sourcemaps.init())
     .pipe(uglify())
+    .pipe(concat('index.min.js'))
+    .pipe(sourcemaps.write('.'))
     .pipe(dest('public/js/'))
     .pipe(browserSync.stream())
 }
@@ -58,6 +61,11 @@ function styles() {
   .pipe(sourcemaps.write('.'))
   .pipe(dest('public/css/'))
   .pipe(browserSync.stream())
+}
+
+function swiperStyles() {
+  return src('node_modules/swiper/swiper-bundle.min.css')
+  .pipe(dest('public/css'))
 }
 
 function copyFavicon() {
@@ -102,9 +110,12 @@ function cleanbuild() {
   return src('build', {allowEmpty: true}).pipe(clean())
 }
 
-async function copyResources() {
-  images()
+async function copyFonts() {
   fonts()
+}
+
+async function copyImages() {
+  images()
 }
 
 async function cleanRes() {
@@ -115,6 +126,7 @@ function startwatch() {
   watch('src/**/*.js', scripts);
   watch('src/**/*.scss', styles);
   watch('src/**/*.twig', compileTwig);
+  watch('src/img/**/*', copyImages);
 }
 
 exports.browsersync = browsersync;
@@ -122,7 +134,9 @@ exports.scripts = scripts;
 exports.copyFavicon = copyFavicon;
 exports.compileTwig = compileTwig;
 exports.styles = styles;
-exports.copyResources = copyResources;
+exports.swiperStyles = swiperStyles;
+exports.copyFonts = copyFonts;
+exports.copyImages = copyImages;
 exports.cleanRes = cleanRes;
-exports.default = parallel(cleanRes, copyResources, copyFavicon, browsersync, scripts, compileTwig, styles, startwatch);
+exports.default = parallel(cleanRes, copyFonts, copyImages, copyFavicon, browsersync, scripts, compileTwig, styles, swiperStyles, startwatch);
 exports.build = series(cleanbuild, scripts, compileTwig, buildcopy);

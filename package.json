@@ -2,7 +2,7 @@
   "name": "velour",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
     "editorconfig": "editorconfig-cli",
     "stylelint": "stylelint \"src/scss/**/*.scss\"",
@@ -44,6 +44,7 @@
   "dependencies": {
     "fix-esm": "^1.0.1",
     "gifsicle": "^5.2.1",
-    "pngquant-bin": "^6.0.1"
+    "pngquant-bin": "^6.0.1",
+    "swiper": "^12.0.2"
   }
 }

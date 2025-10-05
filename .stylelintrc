@@ -5,5 +5,7 @@
     "font-family-name-quotes": "always-unless-keyword",
     "scss/load-partial-extension": "always",
     "selector-class-pattern": "^[a-z0-9-_]+$",
+    "shorthand-property-no-redundant-values": null,
+    "declaration-block-no-redundant-longhand-properties": null,
   }
 }

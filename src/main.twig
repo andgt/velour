@@ -1,0 +1,151 @@
+{% extends 'includes/base.twig' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% set catalog = [
+    {
+        'subtitle': 'Чокеры',
+    },
+    {
+        'subtitle': 'Серьги',
+    },
+    {
+        'subtitle': 'Кольца',
+    },
+    {
+        'subtitle': 'Аксессуары',
+    },
+]%}
+
+{% set novelties = [
+    {
+        'part': 01,
+        'img': 1,
+        'price': 250,
+        'oldprice': 440,
+    },
+    {
+        'part': 18,
+        'img': 2,
+        'price': 140,
+        'oldprice': 240,
+    },
+    {
+        'part': 231,
+        'img': 3,
+        'price': 452,
+    },
+    {
+        'part': 549,
+        'img': 4,
+        'price': 386,
+    },
+    {
+        'part': 2678,
+        'img': 5,
+        'price': 1236,
+    },
+    {
+        'part': 04,
+        'img': 6,
+        'price': 745,
+    },
+] %}
+
+{% block page %}
+    {% include 'includes/templates/_header.twig' %}
+    <main class="main">
+        <h1 class="visually-hidden">Интернет-магазин бижутерии Velour</h1>
+        <section class="slider">
+            <h2 class="slider__title">Oсобенные обручальные кольца</h2>
+            <div class="swiper">
+                <div class="swiper-wrapper slider__wrapper">
+                    <div class="swiper-slide">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="img/tablet/slide-main-1.jpg, img/tablet/slide-main-1@2x.jpg">
+                            <img class="slider__img" src="img/mobile/slide-main-1.jpg" srcset="img/mobile/slide-main-1@2x.jpg" width="320" height="180" alt="Кольца">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                            <img class="slider__img" src="img/mobile/slide-main-2.jpg" srcset="img/mobile/slide-main-2@2x.jpeg" width="320" height="180" alt="Кольца">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                            <img class="slider__img" src="img/mobile/slide-main-3.jpg" srcset="img/mobile/slide-main-3@2x.jpeg" width="320" height="180" alt="Кольца">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                            <img class="slider__img" src="img/mobile/slide-main-4.jpg" srcset="img/mobile/slide-main-4@2x.jpeg" width="320" height="180" alt="Кольца">
+                        </picture>
+                    </div>
+                    <div class="swiper-slide">
+                        <picture>
+                            <img class="slider__img" src="img/mobile/slide-main-5.jpg" srcset="img/mobile/slide-main-5@2x.jpg" width="320" height="180" alt="Кольца">
+                        </picture>
+                    </div>
+                </div>
+                <div class="swiper-pagination slider__pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+        <section class="catalog">
+            <h2 class="main__title catalog__title">Каталог</h2>
+            <div class="container">
+                <ul class="catalog__list">
+                    {% for item in catalog %}
+                        <li class="catalog__item">
+                            <a class="catalog__link" href="#">
+                                <h3 class="catalog__subtitle">{{ item.subtitle }}</h3>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <section class="novelty container">
+            <h2 class="main__title novelty__title">Новинки</h2>
+            <div class="novelty__wrapper">
+                {% for novelty in novelties %}
+                    <article class="product-card">
+                        <header class="product-card__header">
+                            <div class="product-card__part-number">
+                                <span class="product-card__part">Арт.</span>
+                                <span class="product-card__part">{{ novelty.part }}</span>
+                            </div>
+                            <div class="product-card__favourites">
+                                <button class="product-card__btn-favourites btn" type="button">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.6301 3.45753C15.247 3.07428 14.7922 2.77026 14.2916 2.56284C13.791 2.35542 13.2545 2.24866 12.7126 2.24866C12.1707 2.24866 11.6342 2.35542 11.1336 2.56284C10.633 2.77026 10.1782 3.07428 9.79509 3.45753L9.00009 4.25253L8.20509 3.45753C7.43132 2.68376 6.38186 2.24906 5.28759 2.24906C4.19331 2.24906 3.14386 2.68376 2.37009 3.45753C1.59632 4.23129 1.16162 5.28075 1.16162 6.37502C1.16162 7.4693 1.59632 8.51875 2.37009 9.29252L3.16509 10.0875L9.00009 15.9225L14.8351 10.0875L15.6301 9.29252C16.0133 8.90946 16.3174 8.45463 16.5248 7.95404C16.7322 7.45345 16.839 6.91689 16.839 6.37502C16.839 5.83316 16.7322 5.2966 16.5248 4.79601C16.3174 4.29541 16.0133 3.84059 15.6301 3.45753Z" fill="#cccfde"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </header>
+                        <a class="product-card__link" href="#">
+                            <picture>
+                                <img class="product-card__img" src="img/mobile/card-new-{{ novelty.img }}.jpg" width="280" height="280" alt="Фото новинки.">
+                            </picture>
+                        </a>
+                        <footer class="product-card__footer">
+                            {% if novelty.oldprice %}
+                                <span class="product-card__price product-card__price--stock">{{ novelty.price }} &#8381;</span>
+                                <span class="product-card__old-price">
+                                    <del>{{ novelty.oldprice }} &#8381;</del>
+                                </span>
+                            {% else %}
+                                <span class="product-card__price">{{ novelty.price }} &#8381;</span>
+                            {% endif %}
+                        </footer>
+                    </article>
+                {% endfor %}
+            </div>
+            <button class="btn novelty__btn" type="button">
+                <span class="novelty__btn-text">ПОКАЗАТЬ ЕЩЁ</span>
+            </button>
+        </section>
+    </main>
+    {% include 'includes/templates/_footer.twig' %}
+{% endblock %}

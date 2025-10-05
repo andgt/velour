@@ -13,6 +13,23 @@ a {
   text-decoration: none;
 }
 
+.visually-hidden {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  font-size: 0;
+}
+
+.container {
+  padding: 0 20px;
+
+  @media (min-width: $tablet-width) {
+    padding: 0 30px;
+  }
+}
+
 .page {
   height: 100%;
   font-size: 62.5%;
@@ -21,7 +38,9 @@ a {
 .page-body {
   display: flex;
   flex-direction: column;
+  row-gap: 80px;
   width: 100%;
+  max-width: 1440px;
   min-height: 100%;
   margin: 0 auto;
   font-family: "OpenSans-Regular", "Arial", sans-serif;
@@ -62,11 +81,9 @@ a {
   transition: 0.3s ease;
 }
 
-.visually-hidden {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  font-size: 0;
+.btn {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 }

@@ -1,0 +1,43 @@
+{% set information = [
+    {
+        'link': 'О нас',
+    },
+    {
+        'link': 'Доставка и Оплата',
+    },
+    {
+        'link': 'Гарантии',
+    },
+    {
+        'link': 'Отзывы',
+    },
+]%}
+
+<footer class="footer container">
+    <div class="footer__wrapper">
+        <div class="information">
+            <h3 class="main__subtitle footer__subtitle">Информация</h3>
+            <ul class="information__list">
+                {% for item in information %}
+                    <li>
+                        <a class="information__link" href="#">{{ item.link }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="contacts-footer">
+            <h3 class="main__subtitle footer__subtitle">Контакты</h3>
+            <div class="contacts-footer__wrapper">
+                <a class="contacts-footer__number" href="tel:+79885624403">+7-988-562-44-03</a>
+                <a class="contacts-footer__number" href="tel:+79998073317">+7-999-807-33-17</a>
+            </div>
+            <div class="contacts-footer__wrapper">
+                <a class="contacts__mail" href="mailto:bijuteriaVelour@gmail.com">bijuteriaVelour@gmail.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer__info">
+        {% include '_social.twig' %}
+        <a class="footer__service" href="#">Политика конфиденциальности </a>
+    </div>
+</footer>

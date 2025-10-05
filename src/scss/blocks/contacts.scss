@@ -1,0 +1,40 @@
+.contacts {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+
+  @media (min-width: $tablet-width) {
+    order: 4;
+    width: 350px;
+    margin-left: auto;
+  }
+}
+
+.contacts__mail {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-weight: 300;
+  color: $black;
+}
+
+.contacts__schedule {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.contacts__phone {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  row-gap: 5px;
+  margin-left: auto;
+}
+
+.contacts__number {
+  color: $black;
+}
