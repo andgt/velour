@@ -2,6 +2,39 @@
 
 {% block title %}Главная страница{% endblock %}
 
+{% set slider = [
+    {
+        'slide': 1,
+        'imgppi': '1@2x',
+        'tabletimg': 1,
+        'tabletimgppi': '1@2x',
+    },
+    {
+        'slide': 2,
+        'imgppi': '2@2x',
+        'tabletimg': 2,
+        'tabletimgppi': '2@2x',
+    },
+    {
+        'slide': 3,
+        'imgppi': '3@2x',
+        'tabletimg': 3,
+        'tabletimgppi': '3@2x',
+    },
+    {
+        'slide': 4,
+        'imgppi': '4@2x',
+        'tabletimg': 4,
+        'tabletimgppi': '4@2x',
+    },
+    {
+        'slide': 5,
+        'imgppi': '5@2x',
+        'tabletimg': 5,
+        'tabletimgppi': '5@2x',
+    },
+]%}
+
 {% set catalog = [
     {
         'subtitle': 'Чокеры',
@@ -21,36 +54,54 @@
     {
         'part': 01,
         'img': 1,
+        'imgppi': '1@2x',
+        'tabletimg': 1,
+        'tabletimgppi': '1@2x',
         'price': 250,
         'oldprice': 440,
     },
     {
         'part': 18,
         'img': 2,
+        'imgppi': '2@2x',
+        'tabletimg': 2,
+        'tabletimgppi': '2@2x',
         'price': 140,
         'oldprice': 240,
     },
     {
         'part': 231,
         'img': 3,
+        'imgppi': '3@2x',
+        'tabletimg': 3,
+        'tabletimgppi': '3@2x',
         'price': 452,
     },
     {
         'part': 549,
         'img': 4,
+        'imgppi': '4@2x',
+        'tabletimg': 4,
+        'tabletimgppi': '4@2x',
         'price': 386,
     },
     {
         'part': 2678,
         'img': 5,
+        'imgppi': '5@2x',
+        'tabletimg': 5,
+        'tabletimgppi': '5@2x',
         'price': 1236,
     },
     {
         'part': 04,
         'img': 6,
+        'imgppi': '6@2x',
+        'tabletimg': 6,
+        'tabletimgppi': '6@2x',
         'price': 745,
     },
-] %}
+]%}
 
 {% block page %}
     {% include 'includes/templates/_header.twig' %}
@@ -60,32 +111,14 @@
             <h2 class="slider__title">Oсобенные обручальные кольца</h2>
             <div class="swiper">
                 <div class="swiper-wrapper slider__wrapper">
-                    <div class="swiper-slide">
-                        <picture>
-                            <source media="(min-width: 768px)" srcset="img/tablet/slide-main-1.jpg, img/tablet/slide-main-1@2x.jpg">
-                            <img class="slider__img" src="img/mobile/slide-main-1.jpg" srcset="img/mobile/slide-main-1@2x.jpg" width="320" height="180" alt="Кольца">
-                        </picture>
-                    </div>
-                    <div class="swiper-slide">
-                        <picture>
-                            <img class="slider__img" src="img/mobile/slide-main-2.jpg" srcset="img/mobile/slide-main-2@2x.jpeg" width="320" height="180" alt="Кольца">
-                        </picture>
-                    </div>
-                    <div class="swiper-slide">
-                        <picture>
-                            <img class="slider__img" src="img/mobile/slide-main-3.jpg" srcset="img/mobile/slide-main-3@2x.jpeg" width="320" height="180" alt="Кольца">
-                        </picture>
-                    </div>
-                    <div class="swiper-slide">
-                        <picture>
-                            <img class="slider__img" src="img/mobile/slide-main-4.jpg" srcset="img/mobile/slide-main-4@2x.jpeg" width="320" height="180" alt="Кольца">
-                        </picture>
-                    </div>
-                    <div class="swiper-slide">
-                        <picture>
-                            <img class="slider__img" src="img/mobile/slide-main-5.jpg" srcset="img/mobile/slide-main-5@2x.jpg" width="320" height="180" alt="Кольца">
-                        </picture>
-                    </div>
+                    {% for item in slider %}
+                        <div class="swiper-slide">
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="img/tablet/slide-main-{{ item.tabletimg }}.jpg, img/tablet/slide-main-{{ item.tabletimgppi }}.jpg">
+                                <img class="slider__img" src="img/mobile/slide-main-{{ item.slide }}.jpg" srcset="img/mobile/slide-main-{{ item.imgppi }}.jpg 2x" width="320" height="180" alt="Кольца">
+                            </picture>
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="swiper-pagination slider__pagination"></div>
                 <div class="swiper-button-prev"></div>
@@ -126,7 +159,8 @@
                         </header>
                         <a class="product-card__link" href="#">
                             <picture>
-                                <img class="product-card__img" src="img/mobile/card-new-{{ novelty.img }}.jpg" width="280" height="280" alt="Фото новинки.">
+                                <source media="(min-width:768px)" srcset="img/tablet/card-new-{{ novelty.tabletimg }}.jpg, img/tablet/card-new-1.jpg">
+                                <img class="product-card__img" src="img/mobile/mobile-card-{{ novelty.img }}.jpg" srcset="img/mobile/mobile-card-{{ novelty.imgppi }}.jpg 2x" width="280" height="280" alt="Фото новинки.">
                             </picture>
                         </a>
                         <footer class="product-card__footer">
