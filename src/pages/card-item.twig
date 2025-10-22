@@ -1,0 +1,33 @@
+{% extends '../includes/base.twig' %}
+
+{% block title %}
+    {{ 'card item'|title }}
+{% endblock %}
+
+{% block swiper %}
+    ../css/swiper-bundle.min.css
+{% endblock %}
+
+{% block favicon %}
+    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+{% endblock %}
+
+{% block style %}
+    ../css/style.min.css
+{% endblock %}
+
+{% block script %}
+    ../js/index.min.js
+{% endblock %}
+
+{% set mainReturn = 'main.html' %}
+{% set logoInnerAddress = '../img/icons/velour.svg' %}
+
+{% block page %}
+    {% include '../includes/templates/_header.twig' with logoInnerAddress %}
+    <main>
+        <div style="width: 200px; height: 200px">Plug</div>
+    </main>
+    {% include '../includes/templates/_footer.twig' %}
+{% endblock %}
