@@ -1,0 +1,41 @@
+{% extends '../includes/base.twig' %}
+
+{% block title %}
+    {{ 'Динамическое кольцо Титан' }}
+{% endblock %}
+
+{% block swiper %}
+    ../css/swiper-bundle.min.css
+{% endblock %}
+
+{% block favicon %}
+    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+{% endblock %}
+
+{% block style %}
+    ../css/style.min.css
+{% endblock %}
+
+{% block script %}
+    ../js/index.min.js
+{% endblock %}
+
+{% set mainReturn = 'main.html' %}
+{% set logoInnerAddress = '../img/icons/velour.svg' %}
+
+{% block page %}
+    {% include '../includes/templates/_header.twig' with logoInnerAddress %}
+    <main>
+        {% embed '../includes/product-card.twig' %}
+            {% block article %}Арт. 18{% endblock %}
+            {% block tabletimg %}../img/tablet/card-new-2.jpg, ../img/tablet/card-new-2@2x.jpg,{% endblock %}
+            {% block image %}../img/mobile/mobile-card-2.jpg{% endblock %}
+            {% block image2x %}../img/mobile/mobile-card-2@2x.jpg{% endblock %}
+            {% block price %}140{% endblock %}
+            {% block oldprice %}240{% endblock %}
+            {% block description %}Кольца с инкрустацией дорожками бриллиантов в женском кольце. Камни при столь необычном расположении сияют по-особенному.{% endblock %}
+        {% endembed %}
+    </main>
+    {% include '../includes/templates/_footer.twig' %}
+{% endblock %}

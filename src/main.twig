@@ -59,6 +59,7 @@
         'tabletimgppi': '1@2x',
         'price': 250,
         'oldprice': 440,
+        'innerpage': 1,
     },
     {
         'part': 18,
@@ -68,6 +69,7 @@
         'tabletimgppi': '2@2x',
         'price': 140,
         'oldprice': 240,
+        'innerpage': 2,
     },
     {
         'part': 231,
@@ -76,6 +78,7 @@
         'tabletimg': 3,
         'tabletimgppi': '3@2x',
         'price': 452,
+        'innerpage': 3,
     },
     {
         'part': 549,
@@ -84,6 +87,7 @@
         'tabletimg': 4,
         'tabletimgppi': '4@2x',
         'price': 386,
+        'innerpage': 4,
     },
     {
         'part': 2678,
@@ -92,6 +96,7 @@
         'tabletimg': 5,
         'tabletimgppi': '5@2x',
         'price': 1236,
+        'innerpage': 5,
     },
     {
         'part': 04,
@@ -100,6 +105,7 @@
         'tabletimg': 6,
         'tabletimgppi': '6@2x',
         'price': 745,
+        'innerpage': 6,
     },
 ]%}
 
@@ -157,7 +163,7 @@
                                 </button>
                             </div>
                         </header>
-                        <a class="product-card__link" href="pages/card-item.html">
+                        <a class="product-card__link" href="pages/card-item-{{ novelty.innerpage }}.html">
                             <picture>
                                 <source media="(min-width:768px)" srcset="img/tablet/card-new-{{ novelty.tabletimg }}.jpg, img/tablet/card-new-1.jpg">
                                 <img class="product-card__img" src="img/mobile/mobile-card-{{ novelty.img }}.jpg" srcset="img/mobile/mobile-card-{{ novelty.imgppi }}.jpg 2x" width="280" height="280" alt="Фото новинки.">

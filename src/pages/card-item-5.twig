@@ -1,0 +1,40 @@
+{% extends '../includes/base.twig' %}
+
+{% block title %}
+    {{ 'Чокер со вставками' }}
+{% endblock %}
+
+{% block swiper %}
+    ../css/swiper-bundle.min.css
+{% endblock %}
+
+{% block favicon %}
+    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+{% endblock %}
+
+{% block style %}
+    ../css/style.min.css
+{% endblock %}
+
+{% block script %}
+    ../js/index.min.js
+{% endblock %}
+
+{% set mainReturn = 'main.html' %}
+{% set logoInnerAddress = '../img/icons/velour.svg' %}
+
+{% block page %}
+    {% include '../includes/templates/_header.twig' with logoInnerAddress %}
+    <main>
+        {% embed '../includes/product-card.twig' %}
+            {% block article %}Арт. 2678{% endblock %}
+            {% block tabletimg %}../img/tablet/card-new-5.jpg, ../img/tablet/card-new-5@2x.jpg,{% endblock %}
+            {% block image %}../img/mobile/mobile-card-5.jpg{% endblock %}
+            {% block image2x %}../img/mobile/mobile-card-5@2x.jpg{% endblock %}
+            {% block price %}1236{% endblock %}
+            {% block description %}Минималистичный чокер из серебра 925 пробы с холодной белой эмалью. Идеальный выбор для любителей минимализма и едва заметных акцентов.{% endblock %}
+        {% endembed %}
+    </main>
+    {% include '../includes/templates/_footer.twig' %}
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends '../includes/base.twig' %}
 
 {% block title %}
-    {{ 'card item'|title }}
+    {{ 'Чокер Юпитер'|title }}
 {% endblock %}
 
 {% block swiper %}
@@ -27,7 +27,14 @@
 {% block page %}
     {% include '../includes/templates/_header.twig' with logoInnerAddress %}
     <main>
-        <div style="width: 200px; height: 200px">Plug</div>
+        {% embed '../includes/product-card.twig' %}
+            {% block article %}Арт. 549{% endblock %}
+            {% block tabletimg %}../img/tablet/card-new-4.jpg, ../img/tablet/card-new-4@2x.jpg,{% endblock %}
+            {% block image %}../img/mobile/mobile-card-4.jpg{% endblock %}
+            {% block image2x %}../img/mobile/mobile-card-4@2x.jpg{% endblock %}
+            {% block price %}386{% endblock %}
+            {% block description %}Чокер из ювелирного стекла с подвеской ввиде сердца{% endblock %}
+        {% endembed %}
     </main>
     {% include '../includes/templates/_footer.twig' %}
 {% endblock %}

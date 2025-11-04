@@ -1,0 +1,40 @@
+{% extends '../includes/base.twig' %}
+
+{% block title %}
+    {{ 'Кольцо со вставками' }}
+{% endblock %}
+
+{% block swiper %}
+    ../css/swiper-bundle.min.css
+{% endblock %}
+
+{% block favicon %}
+    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+{% endblock %}
+
+{% block style %}
+    ../css/style.min.css
+{% endblock %}
+
+{% block script %}
+    ../js/index.min.js
+{% endblock %}
+
+{% set mainReturn = 'main.html' %}
+{% set logoInnerAddress = '../img/icons/velour.svg' %}
+
+{% block page %}
+    {% include '../includes/templates/_header.twig' with logoInnerAddress %}
+    <main>
+        {% embed '../includes/product-card.twig' %}
+            {% block article %}Арт. 231{% endblock %}
+            {% block tabletimg %}../img/tablet/card-new-3.jpg, ../img/tablet/card-new-3@2x.jpg,{% endblock %}
+            {% block image %}../img/mobile/mobile-card-3.jpg{% endblock %}
+            {% block image2x %}../img/mobile/mobile-card-3@2x.jpg{% endblock %}
+            {% block price %}452{% endblock %}
+            {% block description %}Дизайн этих парных колец очень изысканный и современный. Такие кольца обязательно понравятся тем, кто ищет что-то классическое и в то же время особенное.{% endblock %}
+        {% endembed %}
+    </main>
+    {% include '../includes/templates/_footer.twig' %}
+{% endblock %}
