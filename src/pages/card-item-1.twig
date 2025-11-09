@@ -1,5 +1,38 @@
 {% extends '../includes/base.twig' %}
 
+{% set sliderCard = [
+    {
+        'slide': 1,
+        'imgppi': '1@2x',
+        'tabletimg': 1,
+        'tabletimgppi': '1@2x',
+    },
+    {
+        'slide': 2,
+        'imgppi': '2@2x',
+        'tabletimg': 2,
+        'tabletimgppi': '2@2x',
+    },
+    {
+        'slide': 3,
+        'imgppi': '3@2x',
+        'tabletimg': 3,
+        'tabletimgppi': '3@2x',
+    },
+    {
+        'slide': 4,
+        'imgppi': '4@2x',
+        'tabletimg': 4,
+        'tabletimgppi': '4@2x',
+    },
+    {
+        'slide': 5,
+        'imgppi': '5@2x',
+        'tabletimg': 5,
+        'tabletimgppi': '5@2x',
+    },
+]%}
+
 {% block title %}
     {{ 'Кольцо Супериор' }}
 {% endblock %}
@@ -29,15 +62,18 @@
     <main>
         {% embed '../includes/product-card.twig' %}
             {% block article %}Арт. 1{% endblock %}
-            {% block tabletimg %}../img/tablet/card-new-1.jpg, ../img/tablet/card-new-1@2x.jpg,{% endblock %}
-            {% block image %}../img/mobile/mobile-card-1.jpg{% endblock %}
-            {% block image2x %}../img/mobile/mobile-card-1@2x.jpg{% endblock %}
+            {% for item in sliderCard %}
+
+                {% block image %}../img/template/template-{{ item.slide }}.jpg{% endblock %}
+                {% block image2x %}../img/template/template-{{ item.imgppi }}.jpg 2x{% endblock %}
+            {% endfor %}
             {% block price %}250{% endblock %}
             {% block oldprice %}440{% endblock %}
-            {% block description %}Прекрасные обручальные кольца с инкрустацией дорожками бриллиантов в женском кольце.
-Это замечательный образец современной классики. Бриллианты в кольце расположены под углом к шинке. Камни при столь необычном расположении сияют по-особенному. Их блеск заметен лучше всего когда рука находится в движении.
+            {% block description %}<p>Прекрасные обручальные кольца с инкрустацией дорожками бриллиантов в женском кольце.</p>
+Это замечательный образец современной классики. Бриллианты в кольце расположены под углом к шинке.
+<p>Камни при столь необычном расположении сияют по-особенному. Их блеск заметен лучше всего когда рука находится в движении.</p>
 Мужское кольцо без инкрустации, оно более строгое. Скосы шинки имеют другую, матированную, фактуру. В целом дизайн этих парных колец очень изысканный и современный.
-Такие кольца обязательно понравятся тем, кто ищет что-то классическое и в то же время особенное, не такое, как у всех!{% endblock %}
+<P>Такие кольца обязательно понравятся тем, кто ищет что-то классическое и в то же время особенное, не такое, как у всех!</p>{% endblock %}
         {% endembed %}
     </main>
     {% include '../includes/templates/_footer.twig' %}

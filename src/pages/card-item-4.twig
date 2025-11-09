@@ -1,5 +1,38 @@
 {% extends '../includes/base.twig' %}
 
+{% set sliderCard = [
+    {
+        'slide': 1,
+        'imgppi': '1@2x',
+        'tabletimg': 1,
+        'tabletimgppi': '1@2x',
+    },
+    {
+        'slide': 2,
+        'imgppi': '2@2x',
+        'tabletimg': 2,
+        'tabletimgppi': '2@2x',
+    },
+    {
+        'slide': 3,
+        'imgppi': '3@2x',
+        'tabletimg': 3,
+        'tabletimgppi': '3@2x',
+    },
+    {
+        'slide': 4,
+        'imgppi': '4@2x',
+        'tabletimg': 4,
+        'tabletimgppi': '4@2x',
+    },
+    {
+        'slide': 5,
+        'imgppi': '5@2x',
+        'tabletimg': 5,
+        'tabletimgppi': '5@2x',
+    },
+]%}
+
 {% block title %}
     {{ 'Чокер Юпитер'|title }}
 {% endblock %}
@@ -29,11 +62,13 @@
     <main>
         {% embed '../includes/product-card.twig' %}
             {% block article %}Арт. 549{% endblock %}
-            {% block tabletimg %}../img/tablet/card-new-4.jpg, ../img/tablet/card-new-4@2x.jpg,{% endblock %}
-            {% block image %}../img/mobile/mobile-card-4.jpg{% endblock %}
-            {% block image2x %}../img/mobile/mobile-card-4@2x.jpg{% endblock %}
+            {% for item in sliderCard %}
+                {% block tabletimg %}../img/template/template-{{ item.tabletimg }}.jpg, ../img/template/template-{{ item.tabletimgppi }}.jpg,{% endblock %}
+                {% block image %}../img/template/template-{{ item.slide }}.jpg{% endblock %}
+                {% block image2x %}../img/template/template-{{ item.imgppi }}.jpg 2x{% endblock %}
+            {% endfor %}
             {% block price %}386{% endblock %}
-            {% block description %}Чокер из ювелирного стекла с подвеской ввиде сердца{% endblock %}
+            {% block description %}<p>Чокер из ювелирного стекла с подвеской ввиде сердца</p>{% endblock %}
         {% endembed %}
     </main>
     {% include '../includes/templates/_footer.twig' %}

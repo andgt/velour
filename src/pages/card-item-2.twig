@@ -1,5 +1,38 @@
 {% extends '../includes/base.twig' %}
 
+{% set sliderCard = [
+    {
+        'slide': 1,
+        'imgppi': '1@2x',
+        'tabletimg': 1,
+        'tabletimgppi': '1@2x',
+    },
+    {
+        'slide': 2,
+        'imgppi': '2@2x',
+        'tabletimg': 2,
+        'tabletimgppi': '2@2x',
+    },
+    {
+        'slide': 3,
+        'imgppi': '3@2x',
+        'tabletimg': 3,
+        'tabletimgppi': '3@2x',
+    },
+    {
+        'slide': 4,
+        'imgppi': '4@2x',
+        'tabletimg': 4,
+        'tabletimgppi': '4@2x',
+    },
+    {
+        'slide': 5,
+        'imgppi': '5@2x',
+        'tabletimg': 5,
+        'tabletimgppi': '5@2x',
+    },
+]%}
+
 {% block title %}
     {{ 'Динамическое кольцо Титан' }}
 {% endblock %}
@@ -29,12 +62,14 @@
     <main>
         {% embed '../includes/product-card.twig' %}
             {% block article %}Арт. 18{% endblock %}
-            {% block tabletimg %}../img/tablet/card-new-2.jpg, ../img/tablet/card-new-2@2x.jpg,{% endblock %}
-            {% block image %}../img/mobile/mobile-card-2.jpg{% endblock %}
-            {% block image2x %}../img/mobile/mobile-card-2@2x.jpg{% endblock %}
+            {% for item in sliderCard %}
+                {% block tabletimg %}../img/template/template-{{ item.tabletimg }}.jpg, ../img/template/template-{{ item.tabletimgppi }}.jpg,{% endblock %}
+                {% block image %}../img/template/template-{{ item.slide }}.jpg{% endblock %}
+                {% block image2x %}../img/template/template-{{ item.imgppi }}.jpg 2x{% endblock %}
+            {% endfor %}
             {% block price %}140{% endblock %}
             {% block oldprice %}240{% endblock %}
-            {% block description %}Кольца с инкрустацией дорожками бриллиантов в женском кольце. Камни при столь необычном расположении сияют по-особенному.{% endblock %}
+            {% block description %}<p>Кольца с инкрустацией дорожками бриллиантов в женском кольце. Камни при столь необычном расположении сияют по-особенному.</p>{% endblock %}
         {% endembed %}
     </main>
     {% include '../includes/templates/_footer.twig' %}

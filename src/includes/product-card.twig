@@ -1,15 +1,48 @@
 {% set cardDetail = [
     {
-        'title':'Срок изготовления',
-        'description':'14 календарных дней'
-    },
-    {
         'title': 'артикул',
         'description': '578'
     },
     {
+        'title':'Срок изготовления',
+        'description':'14 календарных дней'
+    },
+    {
         'title': 'материал',
         'description': 'ювелирное стекло'
+    },
+]%}
+
+{% set sliderCard = [
+    {
+        'slide': 1,
+        'imgppi': '1@2x',
+        'tabletimg': 1,
+        'tabletimgppi': '1@2x',
+    },
+    {
+        'slide': 2,
+        'imgppi': '2@2x',
+        'tabletimg': 2,
+        'tabletimgppi': '2@2x',
+    },
+    {
+        'slide': 3,
+        'imgppi': '3@2x',
+        'tabletimg': 3,
+        'tabletimgppi': '3@2x',
+    },
+    {
+        'slide': 4,
+        'imgppi': '4@2x',
+        'tabletimg': 4,
+        'tabletimgppi': '4@2x',
+    },
+    {
+        'slide': 5,
+        'imgppi': '5@2x',
+        'tabletimg': 5,
+        'tabletimgppi': '5@2x',
     },
 ]%}
 
@@ -23,32 +56,42 @@
         </button>
     </header>
     <div class="card__slider">
-        <picture>
-            <source media="(min-width:768px)" srcset="{% block tabletimg %}../img/template/no-image.jpeg, ../img/template/no-image.jpeg{% endblock %}">
-            <img class="product-card__img" src="{% block image %}../img/template/no-image.jpeg{% endblock%}" srcset="{% block image2x %}../img/template/no-image.jpeg{% endblock %}" width="280" height="280" alt="Фото новинки.">
-        </picture>
-    </div>
-    <div class="card__price container">
-        <span class="card__current-price">{% block price %} Default price {% endblock %} &#8381;</span>
-        <span class="card__oldprice">
-            <del>{% block oldprice %} Default old price {% endblock %} &#8381;</del>
-        </span>
-    </div>
-    <div class="card__order container">
-        <a class="card__button" href="https://vk.com/im?entrypoint=community_page&media=&sel=-221021022" target="_blank">написать vk</a>
-    </div>
-    <footer class="container">
-        <dl class="card__detail">
-            {% for item in cardDetail %}
-                <div class="card__detail-inner">
-                    <dt class="card__term">{{ item.title }}:</dt>
-                    <dd class="card__desc">{{ item.description }}</dd>
+        <div class="swiper-wrapper">
+            {% for item in sliderCard %}
+                <div class="swiper-slide">
+                    <picture>
+                        <source media="(min-width:768px)" srcset="{% block tabletimg %}../img/template/template-{{ item.slide }}.jpg, ../img/template/no-image.jpeg{% endblock %}">
+                        <img class="card__img slider__img" src="{% block image %}../img/template/template-{{ item.slide }}.jpg{% endblock%}" srcset="{% block image2x %}../img/template/template-{{ item.slide }}.jpg{% endblock %}" width="280" height="280" alt="Фото новинки.">
+                    </picture>
                 </div>
             {% endfor %}
-        </dl>
-        <div class="card__description">
-            <h3 class="card__subtitle">Описание</h3>
-            <p class="card__text">{% block description%} Default text {% endblock %}</p>
         </div>
+        <div class="swiper-pagination slider__pagination"></div>
+    </div>
+    <div class="card__main">
+        <div class="card__price container">
+            <span class="card__current-price">{% block price %} Default price {% endblock %} &#8381;</span>
+            <span class="card__oldprice">
+                <del>{% block oldprice %} Default old price {% endblock %} &#8381;</del>
+            </span>
+        </div>
+        <div class="card__order container">
+            <a class="card__button" href="https://vk.com/im?entrypoint=community_page&media=&sel=-221021022" target="_blank">написать vk</a>
+            <a class="card__button card__button--second" href="https://vk.com/im?entrypoint=community_page&media=&sel=-221021022" target="_blank">написать whatsapp</a>
+        </div>
+        <div class="container">
+            <dl class="card__detail">
+                {% for item in cardDetail %}
+                    <div class="card__detail-inner">
+                        <dt class="card__term">{{ item.title }}:</dt>
+                        <dd class="card__desc">{{ item.description }}</dd>
+                    </div>
+                {% endfor %}
+            </dl>
+        </div>
+    </div>
+    <footer class="card__description container">
+        <h3 class="card__subtitle">Описание</h3>
+        <div class="card__text">{% block description%} Default text {% endblock %}</div>
     </footer>
 </article>
