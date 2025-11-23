@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.breadcrumbs__link {
+  position: relative;
+  font-weight: 300;
+  color: $grey3;
+  text-transform: capitalize;
+  opacity: 0.6;
+  cursor: default;
+
+  &:not(:last-child) {
+    padding-right: 16px;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 35%;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    border-left: 1px solid $grey3;
+    border-top: 1px solid $grey3;
+    transform: rotate(135deg);
+  }
+}
