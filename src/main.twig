@@ -38,15 +38,19 @@
 {% set catalog = [
     {
         'subtitle': 'Чокеры',
+        'href': 'catalog-chokers',
     },
     {
         'subtitle': 'Серьги',
+        'href': 'catalog-earrings',
     },
     {
         'subtitle': 'Кольца',
+        'href': 'catalog-rings',
     },
     {
         'subtitle': 'Аксессуары',
+        'href': 'catalog-accessories',
     },
 ]%}
 
@@ -137,7 +141,7 @@
                 <ul class="catalog__list">
                     {% for item in catalog %}
                         <li class="catalog__item">
-                            <a class="catalog__link" href="#">
+                            <a class="catalog__link" href="pages/{{ item.href }}.html">
                                 <h3 class="catalog__subtitle">{{ item.subtitle }}</h3>
                             </a>
                         </li>
