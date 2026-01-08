@@ -85,6 +85,8 @@
 
   &:hover {
     color: $gold;
+    animation-name: linkhover;
+    animation-duration: 0.4s;
   }
 
   @media (min-width: $tablet-width) {
