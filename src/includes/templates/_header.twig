@@ -1,21 +1,3 @@
-{% set nav = [
-    {
-        'link': 'Украшения'
-    },
-    {
-        'link': 'О нас'
-    },
-    {
-        'link': 'Доставка и оплата'
-    },
-    {
-        'link': 'Партнерам'
-    },
-    {
-        'link': 'Новинки'
-    },
-]%}
-
 <header class="header container">
     <div class="header__top-menu">
         <div class="header__wrapper">
@@ -28,11 +10,49 @@
             <span class="visually-hidden">Переключатель меню</span>
         </button>
         <ul class="main-nav__list">
-            {% for item in nav %}
-                <li>
-                    <a class="main-nav__link" href="#">{{ item.link }}</a>
-                </li>
-            {% endfor %}
+            <li>
+                <a class="main-nav__link" href="#">Новинки</a>
+            </li>
+            <li>
+                <a class="main-nav__link" href="#">Каталог</a>
+                <ul class="submenu">
+                    <li>
+                        <a class="submenu__link" href="#">Кольца</a>
+                    </li>
+                    <li>
+                        <a class="submenu__link" href="#">Серьги</a>
+                    </li>
+                    <li>
+                        <a class="submenu__link" href="#">Чокеры</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="main-nav__link" href="#">О бренде</a>
+            </li>
+            <li>
+                <a class="main-nav__link" href="#">Информация для клиентов</a>
+                <ul class="submenu">
+                    <li>
+                        <a class="submenu__link" href="#">Акции и скидки</a>
+                    </li>
+                    <li>
+                        <a class="submenu__link" href="#">Возврат</a>
+                    </li>
+                    <li>
+                        <a class="submenu__link" href="#">Подарочные сертификаты</a>
+                    </li>
+                    <li>
+                        <a class="submenu__link" href="#">Характеристики камней</a>
+                    </li>
+                    <li>
+                        <a class="submenu__link" href="#">Оптовым покупателям</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="main-nav__link" href="#">Оплата и доставка</a>
+            </li>
         </ul>
     </nav>
     {% if mainReturn %}
