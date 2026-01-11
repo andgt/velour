@@ -172,6 +172,10 @@
                                 <source media="(min-width:768px)" srcset="img/tablet/card-new-{{ novelty.tabletimg }}.jpg, img/tablet/card-new-1.jpg">
                                 <img class="product-card__img" src="img/mobile/mobile-card-{{ novelty.img }}.jpg" srcset="img/mobile/mobile-card-{{ novelty.imgppi }}.jpg 2x" width="280" height="280" alt="Фото новинки.">
                             </picture>
+                            <div class="product-card__labels">
+                                <span class="product-card__mark product-card__mark--novelty">Новинка</span>
+                                <span class="product-card__mark product-card__mark--best">Хит</span>
+                            </div>
                         </a>
                         <footer class="product-card__footer">
                             {% if novelty.oldprice %}
