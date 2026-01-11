@@ -111,15 +111,15 @@ function cleanbuild() {
 }
 
 async function copyFonts() {
-  fonts()
+  await fonts()
 }
 
 async function copyImages() {
-  images()
+  await images()
 }
 
 async function cleanRes() {
-  return deleteSync(['public/*'])
+  await deleteSync(['public/*'])
 }
 
 function startwatch() {

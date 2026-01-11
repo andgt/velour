@@ -14,6 +14,7 @@
 .contacts__mail {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  width: fit-content;
   font-weight: 300;
   color: $black;
 }
